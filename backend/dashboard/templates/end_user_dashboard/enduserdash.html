@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload a File to Receive a Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        #upload-section {
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 400px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        #success-message {
+            color: green;
+            margin-top: 20px;
+        }
+        #error-message {
+            color: red;
+            margin-top: 20px;
+        }
+        #description {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Upload a File to Receive a Prediction</h2>
+<div id="upload-section">
+    <h3>Upload File (Image, Text, Audio, Video)</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" id="fileInput">
+        <button type="submit">Upload File</button>
+    </form>
+
+    {% if success %}
+        <div id="success-message">Document uploaded successfully</div>
+    {% elif error %}
+        <div id="error-message">An error occurred. Please try again.</div>
+    {% endif %}
+</div>
+
+<p id="description">If you upload a file, you will get a prediction using our AI model.</p>
+
+</body>
+</html>
