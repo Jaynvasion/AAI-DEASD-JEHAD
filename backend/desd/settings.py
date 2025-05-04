@@ -73,14 +73,11 @@ WSGI_APPLICATION = 'desd.wsgi.application'
 # Database configuration (MySQL)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE'),
-        'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': os.getenv('MYSQL_HOST', 'localhost'),  # this is OK now
-        'PORT': os.getenv('MYSQL_PORT', '3306'),   # default MySQL internal port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -115,3 +112,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost').split()
+
+# Allow iframe embedding
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+# Also enable CORS headers if needed
+CORS_ALLOW_ALL_ORIGINS = True  # If you have django-cors-headers installed
+

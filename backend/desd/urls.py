@@ -20,7 +20,11 @@ urlpatterns = [
     path('admin-dashboard/', dashboard_views.admin_dashboard, name='admin_dashboard'),
     path('ai-dashboard/', dashboard_views.ai_dashboard, name='ai_dashboard'),
     path('finance-dashboard/', dashboard_views.finance_dashboard, name='finance_dashboard'),
+
+    # ✅ Add main dashboard route here
+    path('main-dashboard/', dashboard_views.main_dashboard, name='main_dashboard'),
 ]
+
 
 # Serving media files in development
 if settings.DEBUG:
